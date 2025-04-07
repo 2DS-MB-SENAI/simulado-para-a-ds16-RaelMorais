@@ -9,7 +9,7 @@
     },
     {
       "name": "1.2 - Teste Model Livro",
-      "run": "python manage.py shell -c \"from livros.models import Livro; l = Livro(titulo='Teste', autor=1, paginas=100); l.full_clean(); print('OK')\"",
+      "run": "python manage.py shell -c \"from livros.models import Livro; l = Livro(titulo='Teste', autor='Autor', paginas=100); l.full_clean(); print('OK')\"",
       "output": "OK",
       "timeout": 10,
       "points": 10

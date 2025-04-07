@@ -11,7 +11,7 @@ class Autores(models.Model):
         return self.nome
 class Livro(models.Model):
     titulo = models.CharField(max_length=255)
-    autor = models.ForeignKey(Autores, on_delete=models.CASCADE)
+    autor = models.CharField(max_length=255, default='0')
     isbn = models.CharField(max_length=255)
     paginas = models.PositiveIntegerField(default=0)
     
