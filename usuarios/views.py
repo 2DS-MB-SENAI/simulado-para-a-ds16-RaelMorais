@@ -14,9 +14,8 @@ def create_user(request):
     username = request.data.get('username')
     password = request.data.get('password')
     telefone = request.data.get('telefone')
-    escolaridade = request.data.get('escolaridade')
 
-    if not username or not password or not telefone or not escolaridade :
+    if not username or not password or not telefone:
             return Response({'Erro': 'Campos obrigatórios incompletos'}, status=status.HTTP_400_BAD_REQUEST)
     if Usuario.objects.filter(username=username).exists():
             return Response({'Erro': f'Username {username} já existe'}, status=status.HTTP_400_BAD_REQUEST)
@@ -24,8 +23,7 @@ def create_user(request):
     usuario = Usuario.objects.create_user(
         username=username,
         password=password,
-        telefone=telefone, 
-        escolaridade=escolaridade,    
+        telefone=telefone,     
       )
     
     return Response({'Mensagem': f'Usuário {username} criado com sucesso'}, status=status.HTTP_201_CREATED)
