@@ -1,0 +1,7 @@
+./venv 
+*/venv/* 
+venv/ 
+./_env 
+_env/
+_env
+
