@@ -18,7 +18,7 @@ def create_user(request):
 
     if not username or not password or not telefone or not escolaridade :
             return Response({'Erro': 'Campos obrigatórios incompletos'}, status=status.HTTP_400_BAD_REQUEST)
-    if usuario.objects.filter(username=username).exists():
+    if Usuario.objects.filter(username=username).exists():
             return Response({'Erro': f'Username {username} já existe'}, status=status.HTTP_400_BAD_REQUEST)
     
     usuario = Usuario.objects.create_user(
@@ -50,7 +50,7 @@ def login_user(request):
         return Response({'Erro': 'Usuario ou/e senha incorreto'}, status=status.HTTP_401_UNAUTHORIZED)
     
 
-@api_view
+@api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def root (request):
      usuario = request.user
