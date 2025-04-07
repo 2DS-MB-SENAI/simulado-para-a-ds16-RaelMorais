@@ -12,7 +12,6 @@ class Autores(models.Model):
 class Livro(models.Model):
     titulo = models.CharField(max_length=255)
     autor = models.CharField(max_length=255, default='0')
-    isbn = models.CharField(max_length=255, default='0')
     paginas = models.PositiveIntegerField(default=0)
     
     def __str__(self):

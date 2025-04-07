@@ -5,7 +5,6 @@ from .views import *
 
 urlpatterns = [
     path('livros/', view=views.get_livros),
-    path('livro/', view=views.get_livros),
     path('autores/', view=views.get_autores), 
 
     path('livros/<int:pk>', view=views.get_livros_id),
