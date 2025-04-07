@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
-from .serializers import LivrosSerializer, AutoresSerializer
+from .serializers import LivroSerializer, AutoresSerializer
 from .models import Livro, Autores
 from django.template import loader
 from django.http import HttpResponse
@@ -11,13 +11,13 @@ from django.http import HttpResponse
 @api_view(['GET'])
 def get_livros (request):
     livros = Livro.objects.all()
-    serializer = LivrosSerializer(livros, many=True)
+    serializer = LivroSerializer(livros, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def get_autores (request):
     autores = Autores.objects.all()
-    serializer = LivrosSerializer(autores, many=True)
+    serializer = LivroSerializer(autores, many=True)
     return Response(serializer.data)
 
 
@@ -28,7 +28,7 @@ def get_livros_id(request, pk):
         livros = Livro.objects.get(pk=pk)
     except Livro.DoesNotExist:
         return Response({'Error': 'Livro não existe'}, status=status.HTTP_404_NOT_FOUND)
-    serializer = LivrosSerializer(livros)
+    serializer = LivroSerializer(livros)
     return Response(serializer.data)
 
 @api_view(['GET'])
@@ -42,7 +42,7 @@ def get_autores_id(request, pk):
 
 #Para renderizar no HTML 
 
-def listar_livros(request):
+def listar_livro(request):
     livros = Livro.objects.all()
     return render(request, 'livros.html', {'livros':livros})
 
@@ -55,7 +55,7 @@ def listar_autores(request):
 @api_view(['POST'])
 def post_livros(request):
     if request.method == 'POST':
-        serializer = LivrosSerializer(data=request.data) 
+        serializer = LivroSerializer(data=request.data) 
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
