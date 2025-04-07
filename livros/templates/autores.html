@@ -1,0 +1,7 @@
+<h1>Lista de autores</h1>
+
+{% for autores in autores %}
+<li>{{ autores.nome}}</li>
+<li>{{ autores.data_nascimento }}</li>
+<li>{{ autores.biografia }}</li>
+{% endfor %}
