@@ -1,8 +1,9 @@
 <h1>Lista de livros</h1>
-
+<ul>
 {% for livros in livros %}
 <li>{{ livros.titulo }}</li>
 <li>{{ livros.isbn }}</li>
 <li>{{ livros.autor }}</li>
 <li>{{ livros.paginas }}</li>
 {% endfor %}
+</ul>

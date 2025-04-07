@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework', 
     'rest_framework_simplejwt', 
     'livros', 
+    'usuarios', 
 ]
 
 MIDDLEWARE = [
@@ -128,18 +129,18 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_AUTHENTICATION_CLASSES': [
-#         'rest_framework_simplejwt.authentication.JWTAuthentication',  # Usa autenticação JWT
-#     ],
-# }
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',  # Usa autenticação JWT
+    ],
+}
 
 
-# SIMPLE_JWT = {
-#     'ACESS_TOKEN_LIFETIME': timedelta(minutes=60), # Adicione validade para o Token
-#     'REFRESH_TOKEN_LIFETIME': timedelta(days=1), # Define o prazo do Refresh Token
-#     'ROTATE_REFRESH_TOKENS': False, 
-#     'BLACKLIST_AFTER_ROTATION': True, 
-# }
+SIMPLE_JWT = {
+    'ACESS_TOKEN_LIFETIME': timedelta(minutes=60), # Adicione validade para o Token
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1), # Define o prazo do Refresh Token
+    'ROTATE_REFRESH_TOKENS': False, 
+    'BLACKLIST_AFTER_ROTATION': True, 
+}
 
-# # AUTH_USER_MODEL = 'livros.Usuario'
+AUTH_USER_MODEL = 'usuarios.usuario'
