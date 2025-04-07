@@ -3,14 +3,14 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
 from .serializers import LivrosSerializer, AutoresSerializer
-from .models import Livros, Autores
+from .models import Livro, Autores
 from django.template import loader
 from django.http import HttpResponse
 
 # Get para trazer dados em geral. 
 @api_view(['GET'])
 def get_livros (request):
-    livros = Livros.objects.all()
+    livros = Livro.objects.all()
     serializer = LivrosSerializer(livros, many=True)
     return Response(serializer.data)
 
@@ -25,8 +25,8 @@ def get_autores (request):
 @api_view(['GET'])
 def get_livros_id(request, pk):
     try:
-        livros = Livros.objects.get(pk=pk)
-    except Livros.DoesNotExist:
+        livros = Livro.objects.get(pk=pk)
+    except Livro.DoesNotExist:
         return Response({'Error': 'Livro não existe'}, status=status.HTTP_404_NOT_FOUND)
     serializer = LivrosSerializer(livros)
     return Response(serializer.data)
@@ -43,7 +43,7 @@ def get_autores_id(request, pk):
 #Para renderizar no HTML 
 
 def listar_livros(request):
-    livros = Livros.objects.all()
+    livros = Livro.objects.all()
     return render(request, 'livros.html', {'livros':livros})
 
 def listar_autores(request):
