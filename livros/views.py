@@ -44,7 +44,7 @@ def get_autores_id(request, pk):
 
 def listar_livro(request):
     livros = Livro.objects.all()
-    return render(request, 'livros.html', {'livros':livros})
+    return render(request, 'livros.html', {'livros':livros}, status=status.HTTP_200_OK)
 
 def listar_autores(request):
     autores = Autores.objects.all()
